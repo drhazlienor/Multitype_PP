@@ -1,4 +1,4 @@
 # Multitype_PP
-Multitype Point Pattern Analysis talk for R Conference 2023
-This repository contains the codes demonstrated during the talk
+This repository contains the codes demonstrated during the talk entitled Multitype Point Pattern Analysis at R Conference 2023 on 28 Oktober 2023
+
 
