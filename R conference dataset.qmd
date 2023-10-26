@@ -1,0 +1,66 @@
+---
+title: "spatstat data"
+format: html
+editor: visual
+---
+
+\-\--
+
+## Read data
+
+```{r}
+install.packages("spatstat.data")
+library(spatstat.data)
+library(spatstat)
+data(ants)
+#or
+data(amacrine)
+#or
+data("lansing")
+```
+
+\-\--
+
+```{r}
+
+plot(ants)
+plot(split(ants))
+
+plot(amacrine)
+plot(lansing)
+plot(split(lansing))
+plot(split(amacrine))
+```
+
+```{r}
+summary(lansing)
+```
+
+## Explore data
+
+```{r}
+data(lansing)
+lansing
+summary(lansing)
+```
+
+\-\--
+
+## Visualize data
+
+```{r}
+plot(lansing)
+```
+
+```{r}
+levels(marks(amacrine))
+```
+
+```{r}
+
+plot(density(split(lansing)), ribbon = FALSE)
+```
+
+```{r}
+plot(relrisk(ants), bw.relrisk(ants), relative =TRUE)
+```

@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Hazlienor Mohd Hatta">
+
+<title>Multitype Point Pattern Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Multitype Point Pattern_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Multitype Point Pattern_files/libs/quarto-html/quarto.js"></script>
+<script src="Multitype Point Pattern_files/libs/quarto-html/popper.min.js"></script>
+<script src="Multitype Point Pattern_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Multitype Point Pattern_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Multitype Point Pattern_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Multitype Point Pattern_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Multitype Point Pattern_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Multitype Point Pattern_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Multitype Point Pattern_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Multitype Point Pattern Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr Hazlienor Mohd Hatta </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="r-conference-2023" class="level1">
+<h1>R Conference 2023</h1>
+<section id="multitype-point-pattern-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="multitype-point-pattern-analysis">Multitype Point Pattern Analysis</h2>
+<p>Multitype point pattern is a marked point pattern in which the marks are a categorical variable</p>
+<section id="prepare-environment" class="level3">
+<h3 class="anchored" data-anchor-id="prepare-environment">Prepare environment</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at C:/Users/MY PC/OneDrive - Universiti Sains Malaysia/R MPH Spatial Analysis/Multitype_PP</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'janitor'
+
+The following objects are masked from 'package:stats':
+
+    chisq.test, fisher.test</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: sp
+Checking rgeos availability: TRUE
+Please note that 'maptools' will be retired during 2023,
+plan transition at your earliest convenience;
+some functionality will be moved to 'sp'.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: spatstat.data
+Loading required package: spatstat.geom
+spatstat.geom 3.1-0
+Loading required package: spatstat.random
+spatstat.random 3.1-4
+Loading required package: spatstat.explore
+Loading required package: nlme
+
+Attaching package: 'nlme'
+
+The following object is masked from 'package:dplyr':
+
+    collapse
+
+spatstat.explore 3.1-0
+Loading required package: spatstat.model
+Loading required package: rpart
+spatstat.model 3.2-1
+Loading required package: spatstat.linnet
+spatstat.linnet 3.0-6
+
+spatstat 3.0-3 
+For an introduction to spatstat, type 'beginner' </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+
+Welcome to
+   _____ ___  ____  ____  ____         
+  / ___// _ \/ _  \/ __ \/ __ \        
+  \__ \/ ___/ __  /  ___/  ___/        
+ ___/ / /  / / / / /\ \/ /\ \          
+/____/_/  /_/ /_/_/  \__/  \_\   v2.3-10
+
+- type news(package="sparr") for an overview
+- type help("sparr") for documentation
+- type citation("sparr") for how to cite</code></pre>
+</div>
+</div>
+</section>
+<section id="prepare-data-using-own-data" class="level3">
+<h3 class="anchored" data-anchor-id="prepare-data-using-own-data">Prepare data (using own data)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## read polygon data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>kel <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">here</span>(<span class="st">"Map"</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"kelantan.shp"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `kelantan' from data source 
+  `C:\Users\MY PC\OneDrive - Universiti Sains Malaysia\R MPH Spatial Analysis\Multitype_PP\Map\kelantan.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 66 features and 6 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 371629.6 ymin: 503028.2 xmax: 519479.6 ymax: 690232.8
+Projected CRS: Kertau (RSO) / RSO Malaya (m)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## read population data per subdistrict per year</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>kel_mukim <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="fu">here</span> (<span class="st">"mukim.xlsx"</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="do">## merge population data to polygon data</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>kel_map <span class="ot">&lt;-</span> <span class="fu">merge</span>(kel,kel_mukim,<span class="at">by.x=</span><span class="st">"MUKIM"</span>, <span class="at">by.y=</span><span class="st">"MUKIM"</span>, <span class="at">all.x=</span>T, <span class="at">sort=</span>F)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="do">## read linelisting of cases</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>linelist2 <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="fu">here</span> (<span class="st">"linelist.xlsx"</span>))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="do">## convert CRS WGS 84 to Kertau RSO Malaya</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>loc_both <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(linelist2, </span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"Longitude (WGS)"</span>, <span class="st">"Latitude (WGS)"</span>), </span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>                     <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>loc_both <span class="ot">&lt;-</span><span class="fu">st_transform</span>(loc_both, <span class="dv">3168</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="transform-to-ppp-object" class="level3">
+<h3 class="anchored" data-anchor-id="transform-to-ppp-object">Transform to ppp object</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Transform map to spatial object</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>kel_map.sp <span class="ot">&lt;-</span> <span class="fu">as</span>(kel_map, <span class="st">"Spatial"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Create a window</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>kel_map.owin <span class="ot">&lt;-</span> <span class="fu">as</span>(kel_map.sp, <span class="st">"owin"</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="do">## transform to sp</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>loc_both.sp <span class="ot">&lt;-</span> <span class="fu">as</span>(loc_both, <span class="st">"Spatial"</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="do">## transform data sp to ppp - save categorical data as factor</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>all_diag.ppp <span class="ot">&lt;-</span> <span class="fu">as</span>(loc_both.sp, <span class="st">"ppp"</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="do">## set window</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Window</span>(all_diag.ppp) <span class="ot">&lt;-</span> kel_map.owin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-marked-data" class="level3">
+<h3 class="anchored" data-anchor-id="create-marked-data">Create marked data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">marks</span>(all_diag.ppp) <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(loc_both.sp<span class="sc">$</span>Diagnosis)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(all_diag.ppp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Marked planar point pattern:  1318 points
+Average intensity 8.717189e-08 points per square unit
+
+*Pattern contains duplicated points*
+
+Coordinates are given to 2 decimal places
+i.e. rounded to the nearest multiple of 0.01 units
+
+Multitype:
+              frequency proportion    intensity
+Enteric_fever       212  0.1608498 1.402158e-08
+Leptospirosis      1106  0.8391502 7.315031e-08
+
+Window: polygonal boundary
+66 separate polygons (no holes)
+            vertices       area relative.area
+polygon 1        237   23687800       0.00157
+polygon 2        350   56043000       0.00371
+polygon 3        235   18933900       0.00125
+polygon 4        287   17493200       0.00116
+polygon 5        269   41385200       0.00274
+polygon 6        379   39539800       0.00262
+polygon 7        278   61970000       0.00410
+polygon 8        264   15843300       0.00105
+polygon 9        410   30280300       0.00200
+polygon 10       488   31372300       0.00207
+polygon 11       237   23342800       0.00154
+polygon 12       296   33310000       0.00220
+polygon 13       326   21021200       0.00139
+polygon 14       443   16237200       0.00107
+polygon 15       339   16155000       0.00107
+polygon 16       665   20148700       0.00133
+polygon 17       353   61665800       0.00408
+polygon 18       608   23436000       0.00155
+polygon 19       330   20863500       0.00138
+polygon 20       315   44068300       0.00291
+polygon 21       262   22143900       0.00146
+polygon 22       423   24795600       0.00164
+polygon 23       493   11040700       0.00073
+polygon 24       449   94653900       0.00626
+polygon 25       324   42592900       0.00282
+polygon 26       329   47099800       0.00312
+polygon 27       340   47212000       0.00312
+polygon 28       311   69233000       0.00458
+polygon 29       774  231927000       0.01530
+polygon 30       250   37369900       0.00247
+polygon 31       406   38676400       0.00256
+polygon 32       322   48049700       0.00318
+polygon 33       555  117442000       0.00777
+polygon 34       744  110387000       0.00730
+polygon 35       381   30216900       0.00200
+polygon 36       580   55090000       0.00364
+polygon 37       220   21910200       0.00145
+polygon 38       465   21454800       0.00142
+polygon 39       582   90072000       0.00596
+polygon 40       493   52424400       0.00347
+polygon 41       420   47643900       0.00315
+polygon 42       323   28933200       0.00191
+polygon 43       515   76438400       0.00506
+polygon 44       519   37428100       0.00248
+polygon 45       445   50264800       0.00332
+polygon 46       326   17808800       0.00118
+polygon 47       432  116673000       0.00772
+polygon 48       441  147511000       0.00976
+polygon 49       538  275331000       0.01820
+polygon 50       757  451888000       0.02990
+polygon 51       480   32703200       0.00216
+polygon 52       224   15144100       0.00100
+polygon 53       298   23836300       0.00158
+polygon 54       233   31338100       0.00207
+polygon 55       308   25959600       0.00172
+polygon 56       562   22848300       0.00151
+polygon 57       324   25812300       0.00171
+polygon 58       328  948995000       0.06280
+polygon 59      1234 4233710000       0.28000
+polygon 60      1035 3057460000       0.20200
+polygon 61       908  836033000       0.05530
+polygon 62       463  608525000       0.04020
+polygon 63       383  824377000       0.05450
+polygon 64       587  341029000       0.02260
+polygon 65       674  304388000       0.02010
+polygon 66       520  706878000       0.04680
+enclosing rectangle: [371629.6, 519479.6] x [503028.2, 690232.8] units
+                     (147900 x 187200 units)
+Window area = 15119600000 square units
+Fraction of frame area: 0.546</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">marks</span>(all_diag.ppp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Enteric_fever" "Leptospirosis"</code></pre>
+</div>
+</div>
+</section>
+<section id="use-pre-existing-datase" class="level3">
+<h3 class="anchored" data-anchor-id="use-pre-existing-datase">Use pre-existing datase</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"spatstat.data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'spatstat.data' is in use and will not be installed</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat.data)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ants)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(amacrine)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"lansing"</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ants)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Marked planar point pattern:  97 points
+Average intensity 0.0002261486 points per square unit (one unit = 0.5 feet)
+
+Coordinates are integers
+i.e. rounded to the nearest unit (one unit = 0.5 feet)
+
+Multitype:
+            frequency proportion    intensity
+Cataglyphis        29  0.2989691 6.761144e-05
+Messor             68  0.7010309 1.585372e-04
+
+Window: polygonal boundary
+single connected closed polygon with 11 vertices
+enclosing rectangle: [-25, 803] x [-49, 717] units
+                     (828 x 766 units)
+Window area = 428922 square units
+Unit of length: 0.5 feet
+Fraction of frame area: 0.676</code></pre>
+</div>
+</div>
+</section>
+<section id="density-based-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="density-based-analysis">Density-based Analysis</h3>
+<section id="intensity-spatstat" class="level4">
+<h4 class="anchored" data-anchor-id="intensity-spatstat">Intensity {spatstat}</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">split</span>(all_diag.ppp)), <span class="at">ribbon =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Multitype-Point-Pattern_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="relative-probabilityrisk-spatstat" class="level4">
+<h4 class="anchored" data-anchor-id="relative-probabilityrisk-spatstat">Relative probability/risk {spatstat}</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Relative probability</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">relrisk</span>(all_diag.ppp, <span class="fu">bw.relrisk</span>(all_diag.ppp), <span class="at">relative =</span> <span class="cn">FALSE</span>, <span class="at">casecontrol=</span><span class="cn">TRUE</span>, <span class="at">control=</span><span class="st">"Enteric_fever"</span>, <span class="at">at=</span><span class="st">"pixels"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Multitype-Point-Pattern_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Relative risk</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>relrisk_all <span class="ot">&lt;-</span> <span class="fu">relrisk.ppp</span>(all_diag.ppp, <span class="at">relative=</span><span class="cn">TRUE</span>, <span class="at">casecontrol=</span><span class="cn">TRUE</span>, <span class="at">control=</span><span class="st">"Enteric_fever"</span>, <span class="at">at=</span><span class="st">"pixels"</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot risk</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(relrisk_all, <span class="at">main =</span> <span class="st">"2016-2022"</span>, <span class="at">cex.main =</span> <span class="dv">8</span>, <span class="at">cex.lab =</span> <span class="dv">6</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(<span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Multitype-Point-Pattern_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="analysis-using-sparr" class="level4">
+<h4 class="anchored" data-anchor-id="analysis-using-sparr">Analysis using {sparr}</h4>
+<section id="bivariate-density" class="level5">
+<h5 class="anchored" data-anchor-id="bivariate-density">Bivariate Density</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">&lt;-</span><span class="fu">bivariate.density</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  all_diag.ppp,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">h0=</span><span class="dv">10000</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">hp =</span> <span class="dv">1</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">adapt =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">gamma.scale =</span> <span class="st">"geometric"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge =</span> <span class="fu">c</span>(<span class="st">"uniform"</span>, <span class="st">"diggle"</span>, <span class="st">"none"</span>),</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">davies.baddeley =</span> <span class="fl">0.025</span>,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>================================================================================</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Multitype-Point-Pattern_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="relative-risk-estimate" class="level5">
+<h5 class="anchored" data-anchor-id="relative-risk-estimate">Relative Risk Estimate</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## split data</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>diag_lep <span class="ot">&lt;-</span> <span class="fu">split</span>(all_diag.ppp)<span class="sc">$</span>Leptospirosis</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>diag_ent <span class="ot">&lt;-</span> <span class="fu">split</span>(all_diag.ppp)<span class="sc">$</span>Enteric_fever</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Compute a symmetric (pooled) adaptive relative risk estimate</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="do">## with tolerance contours</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>h0 <span class="ot">&lt;-</span> <span class="fu">OS</span>(all_diag.ppp, <span class="at">nstar=</span><span class="st">"geometric"</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>diag_rr <span class="ot">&lt;-</span> <span class="fu">risk</span>(diag_lep, diag_ent, <span class="at">h0=</span>h0, <span class="at">log=</span><span class="cn">TRUE</span>, <span class="at">adapt=</span><span class="cn">TRUE</span>, </span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">tolerate=</span><span class="cn">TRUE</span>, <span class="at">doplot =</span> <span class="cn">TRUE</span>,<span class="at">hp=</span><span class="fu">OS</span>(all_diag.ppp)<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">pilot.symmetry=</span><span class="st">"pooled"</span>, <span class="at">davies.baddeley=</span><span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Estimating case density...Done.
+Estimating control density...Done.
+Calculating tolerance contours...Done.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Multitype-Point-Pattern_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>alternative code</p>
+<div class="cell">
+
+</div>
+</section>
+</section>
+</section>
+<section id="distance-based" class="level3">
+<h3 class="anchored" data-anchor-id="distance-based">Distance based</h3>
+<section id="nearest-neighbour" class="level4">
+<h4 class="anchored" data-anchor-id="nearest-neighbour">Nearest Neighbour</h4>
+<section id="nndist-spatstat" class="level5">
+<h5 class="anchored" data-anchor-id="nndist-spatstat">nndist {spatstat}</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>nnda <span class="ot">&lt;-</span> <span class="fu">nndist</span>(ants, <span class="at">by=</span><span class="fu">marks</span>(ants))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nndist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         
+1 function (X, ...)      
+2 {                      
+3     UseMethod("nndist")
+4 }                      </code></pre>
+</div>
+</div>
+</section>
+<section id="minimum-distance-nndist-spatstat" class="level5">
+<h5 class="anchored" data-anchor-id="minimum-distance-nndist-spatstat">minimum distance nndist {spatstat}</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(nnda, <span class="at">by=</span><span class="fu">list</span>(<span class="at">from=</span><span class="fu">marks</span>(ants)), min)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         from Cataglyphis   Messor
+1 Cataglyphis     5.00000 12.20656
+2      Messor    12.20656 18.78829</code></pre>
+</div>
+</div>
+</section>
+<section id="average-distance-nndist-spatstat" class="level5">
+<h5 class="anchored" data-anchor-id="average-distance-nndist-spatstat">average distance nndist {spatstat}</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(nnda, <span class="at">by=</span><span class="fu">list</span>(<span class="at">from=</span><span class="fu">marks</span>(ants)), mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         from Cataglyphis   Messor
+1 Cataglyphis    67.47011 36.27306
+2      Messor    59.02549 46.12532</code></pre>
+</div>
+</div>
+</section>
+<section id="nncross-spatstat" class="level5">
+<h5 class="anchored" data-anchor-id="nncross-spatstat">nncross {spatstat}</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>nncross <span class="ot">&lt;-</span> <span class="fu">nncross</span>(diag_ent, diag_lep)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>nncross</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            dist which
+1   5852.4480996   422
+2     79.7227780  1036
+3   3241.4515060   513
+4     79.7227780  1036
+5     79.7227780  1036
+6   3241.4515060   513
+7    161.5985254  1008
+8   3241.4515060   513
+9   3241.4515060   513
+10  3241.4515060   513
+11  3241.4515060   513
+12  3241.4515060   513
+13  3241.4515060   513
+14    79.7227780  1036
+15   161.5985254  1008
+16    79.7227780  1036
+17    79.7227780  1036
+18     3.1302682  1008
+19     3.1302682  1008
+20   161.5985254  1008
+21     3.1302682  1008
+22     3.1302682  1008
+23     3.1302682  1008
+24    73.1556054   606
+25  1236.9121974   388
+26   530.6433728   637
+27  2552.6847530   671
+28   497.7817571   637
+29   543.5977708   791
+30   788.8397044   949
+31   813.1616430   949
+32   786.1907521   212
+33   439.4265085  1084
+34   680.7839996   545
+35   389.9579665   848
+36   846.2593465   101
+37   732.8094190   889
+38   959.8572863   557
+39    19.7962331   908
+40   439.7912578   730
+41   461.5275125   613
+42    18.5939771   641
+43   660.3566809   897
+44   238.2596099   403
+45   854.5743662   605
+46   319.7081386   403
+47  1175.6303419   493
+48   208.1535566   403
+49     2.3719922   511
+50    55.0167799   511
+51   319.7081386   403
+52   973.1081683   984
+53   340.4861191   403
+54   288.6313500   163
+55    68.4624781   714
+56  1045.9260301   934
+57   122.7316565     8
+58   261.6151356   403
+59   247.6441758   403
+60  1192.1653206   273
+61   739.2212762   772
+62   457.3514087   627
+63  1086.2487397   667
+64  1810.9582987   504
+65  1466.9770063   545
+66  1649.8931937   934
+67  2424.3973724  1089
+68  2824.7455045    92
+69  3385.0432852   457
+70   458.4593513   944
+71   234.2822914   403
+72  1740.0847050   705
+73   222.2901296   772
+74  3045.7135190   457
+75   547.1822628   575
+76  1344.9706475   467
+77   835.1312608   335
+78   340.4861191   403
+79   639.0110470   124
+80  1515.6371437   492
+81  1225.3552835   712
+82    85.0239683   403
+83   339.1754703   403
+84   291.4739857   525
+85   411.8674046   460
+86   291.4739857   525
+87   339.1754703   403
+88   205.7809208   240
+89  2622.6614162   457
+90  2622.6614162   457
+91  1199.0135168   457
+92  2622.6614162   457
+93  1112.5703254   129
+94  2286.9139402   492
+95   741.5166989   566
+96  4523.3189843   457
+97  1655.6509035   639
+98   169.2568437   794
+99  3980.7709262   569
+100 1597.8754289   569
+101   91.5022456   641
+102  810.3047726   557
+103 1299.1157024   533
+104 1908.3942844   414
+105 1633.2926828    44
+106 1641.1166287    44
+107  302.3879548   641
+108 1480.5587904   794
+109 1908.3942844   414
+110  891.2684065   884
+111  640.0365163   605
+112  640.0365163   605
+113  640.0365163   605
+114  526.4527302   704
+115  766.3120446   641
+116  766.3120446   641
+117 1783.6348579   719
+118 1016.0144674   467
+119 1212.3086379   352
+120  798.5550672   606
+121  195.2149597   585
+122 1622.2766776   702
+123   91.5022456   641
+124 4496.6041494   457
+125    0.3501716   641
+126    0.0000000   641
+127    0.0000000   641
+128  380.1078508    81
+129  226.3526628   869
+130   81.8255336   641
+131  767.2856962   641
+132   90.3811578   641
+133   90.3811578   641
+134  403.0988916   296
+135  902.9954695   622
+136  403.0988916   296
+137  883.5171004   622
+138  241.1720929  1052
+139  664.5188100   364
+140  389.7487212   398
+141  168.1684399   562
+142  209.8263246   478
+143  253.3181026   627
+144   60.1089643   641
+145 1878.1383890   676
+146  625.5996993   156
+147   60.1089643   641
+148  430.4216971  1010
+149   65.7248755  1062
+150  450.5344988  1007
+151  774.7122191   899
+152  277.4753298   134
+153  265.0045985  1062
+154   97.4139568   150
+155  625.5996993   156
+156  182.0346378   214
+157 2502.1142031   367
+158  305.2609746   134
+159  766.7731872   557
+160  149.9271048   150
+161  509.5373168   289
+162 1904.4918797   529
+163  703.7818314   448
+164 1882.7751591   444
+165 1302.1614505   691
+166   98.9699916   524
+167  299.3201440   557
+168  588.4803221   139
+169 2039.8368447   457
+170 2814.0383951   807
+171   47.9696223   331
+172   10.4001826   908
+173 2871.0861279   840
+174  409.6169236   721
+175  390.1733725   212
+176  419.0155324   731
+177  116.4377708   524
+178 3521.9738582   407
+179  644.3822334   791
+180   68.5178259    80
+181 1277.3277061  1007
+182  813.7855067   826
+183  125.9985695   597
+184  135.6152037   444
+185 1175.1308109   411
+186  721.8321563   444
+187 1372.6208096   794
+188  619.9319011   591
+189 1372.6208096   794
+190  900.6440037   686
+191  427.1081999   444
+192 1255.3983459    13
+193 1014.4493101   444
+194  945.1506741    87
+195  861.3659772   767
+196  442.2225700   498
+197 2093.9402230   254
+198  362.7802425   909
+199  982.9148622   727
+200    0.0000000   994
+201 1092.7094256   945
+202  669.3522551   673
+203  185.1305030  1008
+204 2013.8175790   631
+205    0.0000000   994
+206  742.5565539   328
+207   79.7227780  1036
+208  314.0139352   398
+209   79.7227780  1036
+210    3.1302682  1008
+211 1607.7476425   405
+212  161.5985254  1008</code></pre>
+</div>
+</div>
+</section>
+<section id="nncross-spatstat-1" class="level5">
+<h5 class="anchored" data-anchor-id="nncross-spatstat-1">nncross {spatstat}</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>nncross <span class="ot">&lt;-</span> <span class="fu">nncross</span>(diag_ent, diag_lep)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>nncross</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            dist which
+1   5852.4480996   422
+2     79.7227780  1036
+3   3241.4515060   513
+4     79.7227780  1036
+5     79.7227780  1036
+6   3241.4515060   513
+7    161.5985254  1008
+8   3241.4515060   513
+9   3241.4515060   513
+10  3241.4515060   513
+11  3241.4515060   513
+12  3241.4515060   513
+13  3241.4515060   513
+14    79.7227780  1036
+15   161.5985254  1008
+16    79.7227780  1036
+17    79.7227780  1036
+18     3.1302682  1008
+19     3.1302682  1008
+20   161.5985254  1008
+21     3.1302682  1008
+22     3.1302682  1008
+23     3.1302682  1008
+24    73.1556054   606
+25  1236.9121974   388
+26   530.6433728   637
+27  2552.6847530   671
+28   497.7817571   637
+29   543.5977708   791
+30   788.8397044   949
+31   813.1616430   949
+32   786.1907521   212
+33   439.4265085  1084
+34   680.7839996   545
+35   389.9579665   848
+36   846.2593465   101
+37   732.8094190   889
+38   959.8572863   557
+39    19.7962331   908
+40   439.7912578   730
+41   461.5275125   613
+42    18.5939771   641
+43   660.3566809   897
+44   238.2596099   403
+45   854.5743662   605
+46   319.7081386   403
+47  1175.6303419   493
+48   208.1535566   403
+49     2.3719922   511
+50    55.0167799   511
+51   319.7081386   403
+52   973.1081683   984
+53   340.4861191   403
+54   288.6313500   163
+55    68.4624781   714
+56  1045.9260301   934
+57   122.7316565     8
+58   261.6151356   403
+59   247.6441758   403
+60  1192.1653206   273
+61   739.2212762   772
+62   457.3514087   627
+63  1086.2487397   667
+64  1810.9582987   504
+65  1466.9770063   545
+66  1649.8931937   934
+67  2424.3973724  1089
+68  2824.7455045    92
+69  3385.0432852   457
+70   458.4593513   944
+71   234.2822914   403
+72  1740.0847050   705
+73   222.2901296   772
+74  3045.7135190   457
+75   547.1822628   575
+76  1344.9706475   467
+77   835.1312608   335
+78   340.4861191   403
+79   639.0110470   124
+80  1515.6371437   492
+81  1225.3552835   712
+82    85.0239683   403
+83   339.1754703   403
+84   291.4739857   525
+85   411.8674046   460
+86   291.4739857   525
+87   339.1754703   403
+88   205.7809208   240
+89  2622.6614162   457
+90  2622.6614162   457
+91  1199.0135168   457
+92  2622.6614162   457
+93  1112.5703254   129
+94  2286.9139402   492
+95   741.5166989   566
+96  4523.3189843   457
+97  1655.6509035   639
+98   169.2568437   794
+99  3980.7709262   569
+100 1597.8754289   569
+101   91.5022456   641
+102  810.3047726   557
+103 1299.1157024   533
+104 1908.3942844   414
+105 1633.2926828    44
+106 1641.1166287    44
+107  302.3879548   641
+108 1480.5587904   794
+109 1908.3942844   414
+110  891.2684065   884
+111  640.0365163   605
+112  640.0365163   605
+113  640.0365163   605
+114  526.4527302   704
+115  766.3120446   641
+116  766.3120446   641
+117 1783.6348579   719
+118 1016.0144674   467
+119 1212.3086379   352
+120  798.5550672   606
+121  195.2149597   585
+122 1622.2766776   702
+123   91.5022456   641
+124 4496.6041494   457
+125    0.3501716   641
+126    0.0000000   641
+127    0.0000000   641
+128  380.1078508    81
+129  226.3526628   869
+130   81.8255336   641
+131  767.2856962   641
+132   90.3811578   641
+133   90.3811578   641
+134  403.0988916   296
+135  902.9954695   622
+136  403.0988916   296
+137  883.5171004   622
+138  241.1720929  1052
+139  664.5188100   364
+140  389.7487212   398
+141  168.1684399   562
+142  209.8263246   478
+143  253.3181026   627
+144   60.1089643   641
+145 1878.1383890   676
+146  625.5996993   156
+147   60.1089643   641
+148  430.4216971  1010
+149   65.7248755  1062
+150  450.5344988  1007
+151  774.7122191   899
+152  277.4753298   134
+153  265.0045985  1062
+154   97.4139568   150
+155  625.5996993   156
+156  182.0346378   214
+157 2502.1142031   367
+158  305.2609746   134
+159  766.7731872   557
+160  149.9271048   150
+161  509.5373168   289
+162 1904.4918797   529
+163  703.7818314   448
+164 1882.7751591   444
+165 1302.1614505   691
+166   98.9699916   524
+167  299.3201440   557
+168  588.4803221   139
+169 2039.8368447   457
+170 2814.0383951   807
+171   47.9696223   331
+172   10.4001826   908
+173 2871.0861279   840
+174  409.6169236   721
+175  390.1733725   212
+176  419.0155324   731
+177  116.4377708   524
+178 3521.9738582   407
+179  644.3822334   791
+180   68.5178259    80
+181 1277.3277061  1007
+182  813.7855067   826
+183  125.9985695   597
+184  135.6152037   444
+185 1175.1308109   411
+186  721.8321563   444
+187 1372.6208096   794
+188  619.9319011   591
+189 1372.6208096   794
+190  900.6440037   686
+191  427.1081999   444
+192 1255.3983459    13
+193 1014.4493101   444
+194  945.1506741    87
+195  861.3659772   767
+196  442.2225700   498
+197 2093.9402230   254
+198  362.7802425   909
+199  982.9148622   727
+200    0.0000000   994
+201 1092.7094256   945
+202  669.3522551   673
+203  185.1305030  1008
+204 2013.8175790   631
+205    0.0000000   994
+206  742.5565539   328
+207   79.7227780  1036
+208  314.0139352   398
+209   79.7227780  1036
+210    3.1302682  1008
+211 1607.7476425   405
+212  161.5985254  1008</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="cross-type-summary-functions-spatstat" class="level4">
+<h4 class="anchored" data-anchor-id="cross-type-summary-functions-spatstat">Cross-type summary functions {spatstat}</h4>
+<section id="bivariate-g-function" class="level5">
+<h5 class="anchored" data-anchor-id="bivariate-g-function">Bivariate G function</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>Gboth <span class="ot">&lt;-</span> <span class="fu">alltypes</span>(all_diag.ppp, Gcross)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Gboth, <span class="at">main =</span> <span class="st">"2016-2022"</span>, <span class="at">cex.main =</span> <span class="dv">3</span>, <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Multitype-Point-Pattern_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>gcross<span class="ot">&lt;-</span> <span class="fu">Gcross</span>(all_diag.ppp, <span class="st">"Leptospirosis"</span>, <span class="st">"Enteric_fever"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gcross, <span class="at">cex.lab =</span> <span class="fl">1.0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Multitype-Point-Pattern_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="1248"></p>
+</div>
+</div>
+</section>
+<section id="bivariate-k-function" class="level5">
+<h5 class="anchored" data-anchor-id="bivariate-k-function">Bivariate K function</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="do">## takes long time to run. please remove the '#' from the code</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># kcross &lt;- envelope(all_diag.ppp, Kcross, nsim = 99, i = "Leptospirosis", j = "Enteric_fever")</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(kcross, cex.lab = 1.0, xlim = c(0, 15000))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bivariate-l-function" class="level5">
+<h5 class="anchored" data-anchor-id="bivariate-l-function">Bivariate L function</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="do">## takes long time to run. please remove the '#' from the code</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lcross &lt;- Lcross(all_diag.ppp, "Leptospirosis", "Enteric_fever")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="do">## takes long time to run. please remove the '#' from the code</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(lcross,  .- r ~ r, xlim = c(0, 10000))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enveloped Cross L function</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lcross_env &lt;- envelope(all_diag.ppp, Lcross, nsim = 39, i = "Leptospirosis", j = "Enteric_fever", verbose = F)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">## takes long time to run. please remove the '#' from the code</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(lcross_env,  .- r ~ r, xlim = c(0, 10000))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bivariate-pair-correlation-function" class="level5">
+<h5 class="anchored" data-anchor-id="bivariate-pair-correlation-function">Bivariate Pair Correlation Function</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>crosspcf <span class="ot">&lt;-</span> <span class="fu">pcfcross</span>(all_diag.ppp, <span class="st">"Leptospirosis"</span>, <span class="st">"Enteric_fever"</span>, <span class="at">stoyan=</span><span class="fl">0.1</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crosspcf, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Multitype-Point-Pattern_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

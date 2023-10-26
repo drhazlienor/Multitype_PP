@@ -1,0 +1,255 @@
+---
+title: "Multitype Point Pattern Analysis"
+author: "Dr Hazlienor Mohd Hatta"
+format: html
+editor: visual
+---
+
+# R Conference 2023
+
+## Multitype Point Pattern Analysis
+
+Multitype point pattern is a marked point pattern in which the marks are a categorical variable
+
+### Prepare environment
+
+```{r}
+library(here)
+library(readxl)
+library(sf)
+library(tidyverse)
+library(janitor)
+library(lubridate)
+library(DT)
+library(stringr)
+library(broom)
+library(mapview)
+library(ggplot2)
+library(maptools)
+library(spatstat)
+library(sparr)
+```
+
+### Prepare data (using own data)
+
+```{r}
+## read polygon data
+kel <- st_read(here("Map",
+                    "kelantan.shp"))
+
+## read population data per subdistrict per year
+kel_mukim <- read_xlsx(here ("mukim.xlsx"))
+
+## merge population data to polygon data
+kel_map <- merge(kel,kel_mukim,by.x="MUKIM", by.y="MUKIM", all.x=T, sort=F)
+
+## read linelisting of cases
+linelist2 <- read_xlsx(here ("linelist.xlsx"))
+
+## convert CRS WGS 84 to Kertau RSO Malaya
+loc_both <- st_as_sf(linelist2, 
+                     coords = c("Longitude (WGS)", "Latitude (WGS)"), 
+                     crs = 4326)
+loc_both <-st_transform(loc_both, 3168)
+```
+
+### Transform to ppp object
+
+```{r}
+## Transform map to spatial object
+kel_map.sp <- as(kel_map, "Spatial")
+
+## Create a window
+kel_map.owin <- as(kel_map.sp, "owin")
+
+## transform to sp
+loc_both.sp <- as(loc_both, "Spatial")
+
+## transform data sp to ppp - save categorical data as factor
+all_diag.ppp <- as(loc_both.sp, "ppp")
+
+## set window
+Window(all_diag.ppp) <- kel_map.owin
+```
+
+### Create marked data
+
+```{r}
+
+marks(all_diag.ppp) <- as.factor(loc_both.sp$Diagnosis)
+summary(all_diag.ppp)
+levels(marks(all_diag.ppp))
+
+```
+
+### Use pre-existing datase
+
+```{r}
+install.packages("spatstat.data")
+library(spatstat.data)
+library(spatstat)
+data(ants)
+#or
+data(amacrine)
+#or
+data("lansing")
+
+summary(ants)
+```
+
+### Density-based Analysis
+
+#### Intensity {spatstat}
+
+```{r}
+
+plot(density(split(all_diag.ppp)), ribbon = FALSE)
+
+```
+
+#### Relative probability/risk {spatstat}
+
+```{r}
+# Relative probability
+plot(relrisk(all_diag.ppp, bw.relrisk(all_diag.ppp), relative = FALSE, casecontrol=TRUE, control="Enteric_fever", at="pixels"))
+
+# Relative risk
+relrisk_all <- relrisk.ppp(all_diag.ppp, relative=TRUE, casecontrol=TRUE, control="Enteric_fever", at="pixels")
+
+#plot risk
+plot(relrisk_all, main = "2016-2022", cex.main = 8, cex.lab = 6)
+box(lwd = 2)
+```
+
+#### Analysis using {sparr}
+
+##### Bivariate Density
+
+```{r}
+bd <-bivariate.density(
+  all_diag.ppp,
+  h0=10000,
+  hp = 1,
+  adapt = TRUE,
+  gamma.scale = "geometric",
+  edge = c("uniform", "diggle", "none"),
+  davies.baddeley = 0.025,
+)
+
+plot(bd)
+```
+
+##### Relative Risk Estimate
+
+```{r}
+## split data
+diag_lep <- split(all_diag.ppp)$Leptospirosis
+diag_ent <- split(all_diag.ppp)$Enteric_fever
+
+## Compute a symmetric (pooled) adaptive relative risk estimate
+## with tolerance contours
+h0 <- OS(all_diag.ppp, nstar="geometric")
+diag_rr <- risk(diag_lep, diag_ent, h0=h0, log=TRUE, adapt=TRUE, 
+                tolerate=TRUE, doplot = TRUE,hp=OS(all_diag.ppp)/2, 
+                pilot.symmetry="pooled", davies.baddeley=0.05)
+
+```
+
+
+alternative code
+```{r}
+
+```
+
+
+### Distance based
+
+#### Nearest Neighbour
+
+##### nndist {spatstat}
+
+```{r}
+nnda <- nndist(ants, by=marks(ants))
+head(nndist)
+```
+
+##### minimum distance nndist {spatstat}
+
+```{r}
+aggregate(nnda, by=list(from=marks(ants)), min)
+```
+
+##### average distance nndist {spatstat}
+
+```{r}
+aggregate(nnda, by=list(from=marks(ants)), mean)
+```
+
+##### nncross {spatstat}
+
+```{r}
+nncross <- nncross(diag_ent, diag_lep)
+nncross
+```
+
+##### nncross {spatstat}
+
+```{r}
+nncross <- nncross(diag_ent, diag_lep)
+nncross
+```
+
+#### Cross-type summary functions {spatstat}
+
+##### Bivariate G function
+
+```{r}
+Gboth <- alltypes(all_diag.ppp, Gcross)
+plot(Gboth, main = "2016-2022", cex.main = 3, cex.lab = 1.5, xlim = c(0, 10000))
+```
+
+```{r, fig.width=13, fig.height=7}
+
+gcross<- Gcross(all_diag.ppp, "Leptospirosis", "Enteric_fever")
+plot(gcross, cex.lab = 1.0, xlim = c(0, 15000))
+
+```
+
+##### Bivariate K function
+
+```{r}
+## takes long time to run. please remove the '#' from the code
+
+# kcross <- envelope(all_diag.ppp, Kcross, nsim = 99, i = "Leptospirosis", j = "Enteric_fever")
+# plot(kcross, cex.lab = 1.0, xlim = c(0, 15000))
+
+```
+
+##### Bivariate L function
+
+```{r}
+## takes long time to run. please remove the '#' from the code
+# lcross <- Lcross(all_diag.ppp, "Leptospirosis", "Enteric_fever")
+```
+
+```{r,fig.width=13, fig.height=7}
+## takes long time to run. please remove the '#' from the code
+# plot(lcross,  .- r ~ r, xlim = c(0, 10000))
+```
+
+```{r}
+# enveloped Cross L function
+# lcross_env <- envelope(all_diag.ppp, Lcross, nsim = 39, i = "Leptospirosis", j = "Enteric_fever", verbose = F)
+```
+
+```{r,fig.width=13, fig.height=7}
+## takes long time to run. please remove the '#' from the code
+# plot(lcross_env,  .- r ~ r, xlim = c(0, 10000))
+```
+
+##### Bivariate Pair Correlation Function
+
+```{r}
+crosspcf <- pcfcross(all_diag.ppp, "Leptospirosis", "Enteric_fever", stoyan=0.1)
+plot(crosspcf, xlim = c(0, 30000))
+```
